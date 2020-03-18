@@ -1,0 +1,17 @@
+{
+    "version": "1.0.0",
+    "author": {"name":"tom kim","email":"hello@tomkim.net"},
+    "resources": [
+        {
+            "resourceId": "rId0",
+            "sourceType": 5,
+            "file": "resources/coronaViz58FE294D2E2247189F315D48BA0FAA33.pbiviz.json"
+        }
+    ],
+    "visual": {"name":"coronaViz","displayName":"CoronaViz","guid":"coronaViz58FE294D2E2247189F315D48BA0FAA33","visualClassName":"Visual","version":"1.0.0","description":"d3 corona example","supportUrl":"google.com","gitHubUrl":""},
+    "metadata": {
+        "pbivizjson": {
+            "resourceId": "rId0"
+        }
+    }  
+}

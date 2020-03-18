@@ -1,0 +1,106 @@
+{
+    "dataRoles": [
+        {
+            "displayName": "Population",
+            "name": "Population",
+            "kind": "Measure"
+        },
+        {
+            "displayName": "Infected",
+            "name": "Infected",
+            "kind": "Measure"
+        }
+    ],
+    "objects": {
+        "dataPoint": {
+        "displayName": "Data colors",
+        "properties": {
+            "defaultColor": {
+                "displayName": "Default color",
+                "type": {
+                    "fill": {
+                        "solid": {
+                            "color": true
+                    }
+                        }
+                    }
+                },
+                "showAllDataPoints": {
+                    "displayName": "Show all",
+                    "type": {
+                        "bool": true
+                    }
+                },
+                "fill": {
+                    "displayName": "Fill",
+                    "type": {
+                        "fill": {
+                            "solid": {
+                                "color": true
+                            }
+                        }
+                    }
+                },
+                "fillRule": {
+                    "displayName": "Color saturation",
+                    "type": {
+                        "fill": {}
+                    }
+                },
+                 "fontSize": {
+                    "displayName": "Text Size",
+                    "type": {
+                        "formatting": {
+                            "fontSize": true
+                        }
+                    }
+                }
+            }
+        },
+        "customSettings": {
+            "displayName": "Custom Settings",
+            "properties": {
+                "numberOfPeople": {
+                    "displayName": "Population (Placeholder)",
+                    "type": {
+                      "enumeration": [
+                        {
+                          "value": "5",
+                          "displayName": "5"
+                        },
+                        {
+                          "value": "20",
+                          "displayName": "20"
+                        },
+                        {
+                          "value": "40",
+                          "displayName": "30"
+                        }
+                      ]
+                    }
+                  }
+                }
+            }
+    },
+    "dataViewMappings": [
+        {
+          "conditions": [
+            {
+              "Population": {
+                "max": 1
+              },
+              "Infected":{
+                  "max": 1
+              }
+            }
+          ],
+          "categorical": {
+            "values": {
+              "select": [
+                { "bind": { "to": "Value" } }
+              ]
+            }
+          }
+        }
+      ]
+}
