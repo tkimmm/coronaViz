@@ -1,19 +1,21 @@
 import { Visual } from "../../src/visual";
-var powerbiKey = "powerbi";
-var powerbi = window[powerbiKey];
+import powerbiVisualsApi from "powerbi-visuals-api"
+import IVisualPlugin = powerbiVisualsApi.visuals.plugins.IVisualPlugin
+import VisualConstructorOptions = powerbiVisualsApi.extensibility.visual.VisualConstructorOptions
+var powerbiKey: any = "powerbi";
+var powerbi: any = window[powerbiKey];
 
-var coronaViz58FE294D2E2247189F315D48BA0FAA33 = {
-    name: 'coronaViz58FE294D2E2247189F315D48BA0FAA33',
+var coronaViz58FE294D2E2247189F315D48BA0FAA33_DEBUG: IVisualPlugin = {
+    name: 'coronaViz58FE294D2E2247189F315D48BA0FAA33_DEBUG',
     displayName: 'CoronaViz',
     class: 'Visual',
-    version: '1.0.0',
     apiVersion: '2.6.0',
-    create: (options) => {
+    create: (options?: VisualConstructorOptions) => {
         if (Visual) {
             return new Visual(options);
         }
 
-        console.error('Visual instance not found');
+        throw 'Visual instance not found';
     },
     custom: true
 };
@@ -21,7 +23,7 @@ var coronaViz58FE294D2E2247189F315D48BA0FAA33 = {
 if (typeof powerbi !== "undefined") {
     powerbi.visuals = powerbi.visuals || {};
     powerbi.visuals.plugins = powerbi.visuals.plugins || {};
-    powerbi.visuals.plugins["coronaViz58FE294D2E2247189F315D48BA0FAA33"] = coronaViz58FE294D2E2247189F315D48BA0FAA33;
+    powerbi.visuals.plugins["coronaViz58FE294D2E2247189F315D48BA0FAA33_DEBUG"] = coronaViz58FE294D2E2247189F315D48BA0FAA33_DEBUG;
 }
 
-export default coronaViz58FE294D2E2247189F315D48BA0FAA33;
+export default coronaViz58FE294D2E2247189F315D48BA0FAA33_DEBUG;

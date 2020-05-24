@@ -95,17 +95,13 @@ export function Person(svg, x, y, id, color, aoa, weight) {
         .attr("cx", thisobj.posX)
         .attr("cy", thisobj.posY)
         .style("fill", thisobj.color);
-     
-        // var intersectBall = ball.enter()
-        //                     .append('circle')
-        //                     .attr({ 'id': thisobj.id + '_intersect', 'class': 'intersectBall' });
     }
 
     this.infected = function () {
         thisobj.infectStatus = true;
         thisobj.Draw();
-        var count = svg.select('#wow')
-        infectCount < 17 ? 
+        let count = svg.select('#wow')
+        infectCount < 7 ? 
         count.text('Infected Count: ' + infectCount) :
         count.text('Everybody Infected :(') 
 
@@ -126,17 +122,11 @@ export function ProcessCollision(person1, person2, peopleArray) {
 
     if (checkCollision(person1, person2) ) {
         // intersection point
-        var interx = ((person1.posX * person2.radius) + person2.posX * person1.radius)
+    var interx = ((person1.posX * person2.radius) + person2.posX * person1.radius)
         / (person1.radius + person2.radius);
         var intery = ((person1.posY * person2.radius) + person2.posY  * person1.radius)
         / (person1.radius + person2.radius);
 
-        // show collision effect for 500 miliseconds
-        // this.intersectPerson = this.svg.select('#' + person1.id + '_intersect');
-        // this.intersectPerson.attr({ 'cx': interx, 'cy': intery, 'r': 5 ,'fill': null })
-        //             .transition()
-        //             .duration(500)
-        
         // calculate new velocity of each person.
         var vx1 = (person1.vx * (person1.weight - person2.weight)
             + (2 * person2.weight * person2.vx )) / (person1.weight + person2.weight);

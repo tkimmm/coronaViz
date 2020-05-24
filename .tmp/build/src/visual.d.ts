@@ -16,9 +16,9 @@ export declare class Visual implements IVisual {
     private host;
     people: any[];
     startStopFlag: any;
+    infectedCount: number;
     width: number;
     height: number;
-    infectedCount: number;
     constructor(options: VisualConstructorOptions);
     createPeopleArray(value: number, currentWidth: number, currentHeight: number): void;
     enumerateObjectInstances(options: EnumerateVisualObjectInstancesOptions): VisualObjectInstance[] | VisualObjectInstanceEnumerationObject;

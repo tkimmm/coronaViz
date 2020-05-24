@@ -2,12 +2,7 @@
     "dataRoles": [
         {
             "displayName": "Population",
-            "name": "Population",
-            "kind": "Measure"
-        },
-        {
-            "displayName": "Infected",
-            "name": "Infected",
+            "name": "Measure",
             "kind": "Measure"
         }
     ],
@@ -97,7 +92,7 @@
           "categorical": {
             "values": {
               "select": [
-                { "bind": { "to": "Value" } }
+                { "bind": { "to": "Measure" } }
               ]
             }
           }

@@ -106,43 +106,64 @@ export class Visual implements IVisual {
   private host: IVisualHost;
   public people = [];
   public startStopFlag = null;
-  public width = 350;
-  public height = 350;
   public infectedCount = 1;
+  public width = 300;
+  public height = 140;
+
   constructor(options: VisualConstructorOptions) {
     this.host = options.host;
     this.svg = d3.select(options.element)
-    .append('svg')
+    .attr("width", this.width)
+    .attr("height", this.height)
+    .append('svg');
 
     this.container = this.svg.append("g")
+    .attr("width", this.width)
+    .attr("height", this.height)
     .classed('container', true);
+
+    //border
+    this.container.append("rect")
+    .attr("x", 0)
+    .attr("y", 0)
+    .attr("width", this.width)
+    .attr("height",this.height)
+    .style("stroke", 'black')
+    .style("fill", "none")
+    .style("stroke-width", 2);
 
     this.textCounter = this.container.append("text")
      .attr('id','wow')
+     .attr('x', 10)
+     .attr('y', this.height - 10)
      .text('Infected Count: 1')
      .classed("textCounter", true);
 
-    this.people.push(new p.Person(this.container, 10, 7, 'n1', 'red', Math.PI / 2, 5));
-    this.people.push(new p.Person(this.container, 30, 14, 'n2', '#69b3a2', Math.PI / 3, 5));
-    this.people.push(new p.Person(this.container, 40, 21, 'n3', '#69b3a2', Math.PI / 4, 5));
-    this.people.push(new p.Person(this.container, 60, 28, 'n4', '#69b3a2', Math.PI / 5, 5));
-    this.people.push(new p.Person(this.container, 80, 35, 'n5', '#69b3a2', Math.PI / 6, 5));
-    this.people.push(new p.Person(this.container, 100, 42, 'n6', '#69b3a2', Math.PI / 7, 5));
-    this.people.push(new p.Person(this.container, 120, 47, 'n7', '#69b3a2', Math.PI / 8, 5));
-    this.people.push(new p.Person(this.container, 140, 54, 'n8', '#69b3a2', Math.PI / 9, 5));
-    this.people.push(new p.Person(this.container, 150, 61, 'n9', '#69b3a2', Math.PI + Math.PI / 66, 5));
-    this.people.push(new p.Person(this.container, 170, 68, 'n10', '#69b3a2', Math.PI + Math.PI / 77, 5));
-    this.people.push(new p.Person(this.container, 190, 75, 'n11', '#69b3a2', Math.PI + Math.PI / 18, 5));
-    this.people.push(new p.Person(this.container, 210, 82, 'n12', '#69b3a2', Math.PI + Math.PI / 23, 5));
-    this.people.push(new p.Person(this.container, 240, 89, 'n13', '#69b3a2', Math.PI + Math.PI / 41, 5));
-    this.people.push(new p.Person(this.container, 280, 96, 'n14', '#69b3a2', Math.PI + Math.PI / 123, 5));
-    this.people.push(new p.Person(this.container, 300, 102, 'n15', '#69b3a2', Math.PI + Math.PI / 31, 5));
-    this.people.push(new p.Person(this.container, 23, 109, 'n16', '#69b3a2', Math.PI + Math.PI / 44, 5));
-    this.people.push(new p.Person(this.container, 40, 120, 'n17', '#69b3a2', Math.PI + Math.PI / 91, 5));
-    for (let person of this.people){
-      this.drawInital(person);
-    }
-    this.animate();
+     this.people.push(new p.Person(this.container, 10, 7, 'n1', 'red', Math.PI / 7, 5));
+     this.people.push(new p.Person(this.container, 30, 14, 'n2', '#69b3a2', Math.PI / 3, 5));
+     this.people.push(new p.Person(this.container, 40, 21, 'n3', '#69b3a2', Math.PI / 4, 5));
+     this.people.push(new p.Person(this.container, 60, 28, 'n4', '#69b3a2', Math.PI / 5, 5));
+     this.people.push(new p.Person(this.container, 80, 35, 'n5', '#69b3a2', Math.PI / 6, 5));
+     this.people.push(new p.Person(this.container, 100, 42, 'n6', '#69b3a2', Math.PI / 7, 5));
+     this.people.push(new p.Person(this.container, 120, 47, 'n7', '#69b3a2', Math.PI / 8, 5));
+     for (let person of this.people){
+       this.drawInital(person);
+     }
+     this.animate();
+    // this.people.push(new p.Person(this.container, 140, 54, 'n8', '#69b3a2', Math.PI / 9, 5));
+    // this.people.push(new p.Person(this.container, 150, 61, 'n9', '#69b3a2', Math.PI + Math.PI / 66, 5));
+    // this.people.push(new p.Person(this.container, 170, 68, 'n10', '#69b3a2', Math.PI + Math.PI / 77, 5));
+    // this.people.push(new p.Person(this.container, 190, 75, 'n11', '#69b3a2', Math.PI + Math.PI / 18, 5));
+    // this.people.push(new p.Person(this.container, 210, 82, 'n12', '#69b3a2', Math.PI + Math.PI / 23, 5));
+    // this.people.push(new p.Person(this.container, 240, 89, 'n13', '#69b3a2', Math.PI + Math.PI / 41, 5));
+    // this.people.push(new p.Person(this.container, 280, 96, 'n14', '#69b3a2', Math.PI + Math.PI / 3.5, 5));
+    // this.people.push(new p.Person(this.container, 300, 102, 'n15', '#69b3a2', Math.PI + Math.PI / 4.2, 5));
+    // this.people.push(new p.Person(this.container, 320, 109, 'n16', '#69b3a2', Math.PI + Math.PI / 44, 5));
+    // this.people.push(new p.Person(this.container, 40, 120, 'n17', '#69b3a2', Math.PI + Math.PI / 91, 5));
+    // this.people.push(new p.Person(this.container, 180, 110, 'n18', '#69b3a2', Math.PI + Math.PI / 91, 5));
+    // this.people.push(new p.Person(this.container, 88, 120, 'n19', '#69b3a2', Math.PI + Math.PI / 91, 5));
+    // this.people.push(new p.Person(this.container, 99, 120, 'n20', '#69b3a2', Math.PI + Math.PI / 91, 5));
+
 }
 
 public createPeopleArray(value: number, currentWidth: number, currentHeight: number): void {
@@ -191,10 +212,12 @@ public enumerateObjectInstances(
     let visualViewModel: CoronaVisualViewModel = visualTransform(options, this.host);
     this.svg.attr("width", options.viewport.width - 20);
     this.svg.attr("height", options.viewport.height - 20);
-    this.container.attr("width", options.viewport.width - 20);
-    this.container.attr("height", options.viewport.height - 20);
-    this.textCounter.attr('x', 5).attr('y', options.viewport.height - 25)
-    // console.log(visualViewModel)
+  
+    console.log('update called')
+
+    if(options.type !== 4){
+      console.log('not called')
+    }
   }
 
   public animate() {
@@ -203,9 +226,9 @@ public enumerateObjectInstances(
         for (var i = 0; i < people.length; ++i) {
                 let r = people[i].Move();
                 for (let j = i + 1; j < people.length; ++j) {
-                     p.ProcessCollision(i, j, people)
-                  }
-             }
+                  p.ProcessCollision(i, j, people)
+                }
+              }
          }, 500);
     }
   /**
