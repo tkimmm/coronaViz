@@ -6,6 +6,7 @@
     "package": "pbiviz package",
     "lint": "tslint -c tslint.json -p tsconfig.json"
   },
+  "resolutions": { "serialize-javascript": "^2.1.1" },
   "dependencies": {
     "@babel/runtime": "7.6.0",
     "@babel/runtime-corejs2": "7.6.0",
