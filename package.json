@@ -9,7 +9,7 @@
   "resolutions": { "serialize-javascript": "^2.1.1" },
   "dependencies": {
     "@babel/runtime": "7.19.4",
-    "@babel/runtime-corejs2": "7.20.13",
+    "@babel/runtime-corejs2": "7.21.5",
     "@types/d3": "7.4.0",
     "d3": "7.6.1",
     "powerbi-visuals-utils-dataviewutils": "2.4.1",
